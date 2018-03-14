@@ -4,10 +4,13 @@
 
 (require 'ffe-packages)
 
-(ffe--req 'magit 'evil-magit 'magithub)
+(ffe--req 'magit 'evil-magit)
 
-(magithub-feature-autoinject t)
 (global-magit-file-mode t)
+
+;; Temporary disable because of bugs
+;; (ffe--req 'magithub)
+;; (magithub-feature-autoinject t)
 
 (general-def
   "C-x g" 'magit-status)

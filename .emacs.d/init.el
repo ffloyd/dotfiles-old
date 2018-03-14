@@ -28,6 +28,10 @@
        (expand-file-name "modules/" ffe-directory))
   "Path to 0xFFE modules directory, ~/emacs.d/modules/ in most cases.")
 
+(defvar ffe-failed-modules
+  nil
+  "List of failed to load modules.")
+
 (add-to-list 'load-path ffe-modules-directory)
 
 (defun ffe--safe-require (module)
@@ -36,7 +40,8 @@
   (message "Loading '%s'..." module)
   (condition-case err
       (require module)
-    (error (message "-- Error: %s" err)))
+    (error (message "-- Error: %s" err)
+           (push module ffe-failed-modules)))
   (message "Loading '%s'... done." module))
 
 (defvar ffe-first-order-modules
@@ -90,6 +95,9 @@
   "tn" 'linum-mode
   "tN" 'linum-relative-toggle
   )
+
+(unless (null ffe-failed-modules)
+  (user-error "Some modules failed to load: %s" ffe-failed-modules))
 
 (provide 'init)
 ;;; init.el ends here
