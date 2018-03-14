@@ -29,7 +29,6 @@ antigen bundle mix-fast
 antigen bundle osx
 antigen bundle rake-fast
 antigen bundle rbenv
-antigen bundle vi-mode
 
 # zsh-users stuff
 antigen bundle zsh-users/zsh-autosuggestions
