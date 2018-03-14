@@ -4,3 +4,5 @@
 	signingkey = C965B572085D6A27
 [github]
 	user = ffloyd
+[commit]
+	gpgsign = true
